@@ -1,0 +1,80 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malumecf</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+  <div class="container nav-content">
+    <a href="home.html"> <div class="logo"><strong>Malume cf</strong></div></a>
+   
+
+    <!-- Hamburger Button -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+      ☰
+    </button>
+
+    <nav id="mainNav">
+      <a href="#">Home</a>
+      <a href="#catalog">Shop</a>
+      <a href="Contact.html">Contact</a>
+    </nav>
+
+    <button id="cartBtn">
+  <img src="images/cart.png" alt="Cart" style="width:30px; height:30px;">
+  <span id="cartCount">0</span>
+</button>
+  </div>
+</header>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <div>
+        <h1>Smart Devices & Smart Adventures</h1>
+        <p>Browse our curated collection and order directly via WhatsApp.</p>
+        <a href="#catalog" class="btn-primary">Shop Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalog" class="catalog container">
+    <h2>The Collection</h2>
+    <div class="categories">
+      <button class="category-btn" onclick="filterCategory('iPhone')">iPhones</button>
+      <button class="category-btn" onclick="filterCategory('Samsung')">Samsung Phones</button>
+      <button class="category-btn" onclick="filterCategory('MacBook')">MacBooks</button>
+      <button class="category-btn" onclick="filterCategory('Watch')">Watches</button>
+      <button class="category-btn" onclick="filterCategory('Camp Tent Rental')">Camping</button>
+      <button class="category-btn" onclick="filterCategory('All')">All</button>
+    </div>
+    <div class="products" id="productList"></div>
+  </section>
+  
+  <footer id="contact" class="footer">
+    <div class="container">
+      <p>Need help? Chat to us on WhatsApp for availability and delivery.</p>
+      <a href="https://wa.me/27745243348" target="_blank" class="btn-outline">Open WhatsApp</a>
+      <p class="copyright">© <span id="year"></span> Malumecf. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="cartDrawer" class="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="closeCart">Close</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="subtotal">Subtotal: <span id="cartTotal">R0</span></div>
+      <button id="clearCart" class="btn-primary">Clear</button>
+      <button id="checkoutBtn" class="btn-outline">Checkout via WhatsApp</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
