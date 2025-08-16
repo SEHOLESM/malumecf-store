@@ -73,7 +73,7 @@ body {
   color: #ffffff;
 }
 .hero p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-top: 0.5rem;
   color: #cccccc;
 }
@@ -120,9 +120,6 @@ body {
   gap: 1.5rem;
 }
 .product {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* lowered from 250px */
-  gap: 1rem;
   border: 1px solid #eee;
   border-radius: 20px;
   overflow: hidden;
@@ -137,11 +134,11 @@ body {
 }
 img {
   max-width: 100%;
-  height: 100%;
+  height: auto;
 }
 .product img {
   width: 100%;
-  height: 100%;
+  height: 200px;
   object-fit: cover;
 }
 .product h3 {
@@ -253,7 +250,7 @@ img {
 @media (max-width: 600px) {
   .nav-content { flex-direction: column; gap: 10px; }
   .navbar nav { flex-direction: column; gap: 8px;  text-align: center;}
-  .hero h1 { font-size: 1.5rem; }
+  .hero h1 { font-size: 1.8rem; }
   .categories { flex-direction: column; align-items: center; }
   #cartBtn { width: 100%; justify-content: center; }
   .product img { height: 180px; }
@@ -285,12 +282,9 @@ img {
     max-height: 0;
     transition: max-height 0.3s ease;
   }
-   .menu-toggle {
-    display: block;
-  }
   #mainNav.show {
-    max-height: 300px; /* enough for links */
-    padding: 1rem 0;
+    padding: 1rem;
+    max-height: 200px;
   }
 }
 
