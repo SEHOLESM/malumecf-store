@@ -10,26 +10,22 @@
 <body>
   <header class="navbar">
   <div class="container nav-content">
-    <a href="home.html"> <div class="logo"><strong>Malume cf</strong></div></a>
-   
+  <a href="home.html"><div class="logo"><strong>Malume cf</strong></div></a>
 
-    <!-- Hamburger Button -->
-   
+  <!-- Hamburger Button (moved OUT of nav) -->
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">☰</button>
 
-    <nav id="mainNav">
-      <a href="#">Home</a>
-      <a href="#catalog">Shop</a>
-      <a href="Contact.html">Contact</a>
-     <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-      ☰
-    </button>
-    </nav>
+  <nav id="mainNav">
+    <a href="#">Home</a>
+    <a href="#catalog">Shop</a>
+    <a href="Contact.html">Contact</a>
+  </nav>
 
-    <button id="cartBtn">
-  <img src="images/cart.png" alt="Cart" style="width:30px; height:30px;">
+  <div id="cartBtn" class="cart-float">
+  <img src="images/cart.png" alt="Cart" />
   <span id="cartCount">0</span>
-</button>
-  </div>
+</div>
+</div>
 </header>
 
   <section class="hero">

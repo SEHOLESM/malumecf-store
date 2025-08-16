@@ -111,7 +111,8 @@ const menuToggle = document.getElementById("menuToggle");
 const mainNav = document.getElementById("mainNav");
 
 // ======================
-/* Helpers */
+// Helpers
+// ======================
 function formatCurrency(amount) {
   return "R" + (amount || 0).toLocaleString("en-ZA");
 }
@@ -176,17 +177,13 @@ function renderCart() {
     cartItems.appendChild(div);
   });
 
-  // Update subtotal value (HTML already shows "Subtotal:")
   cartTotal.textContent = formatCurrency(total);
-
-  // Update badge to show Rand total
   cartCountEl.textContent = formatCurrency(total);
 
- // Trigger pulse + bounce animation
-cartCountEl.classList.remove("pulse", "bounce"); // reset animations
-void cartCountEl.offsetWidth; // force reflow
-cartCountEl.classList.add("pulse", "bounce");
-
+  // Trigger pulse + bounce animation
+  cartCountEl.classList.remove("pulse", "bounce"); // reset animations
+  void cartCountEl.offsetWidth; // force reflow
+  cartCountEl.classList.add("pulse", "bounce");
 }
 
 // ======================
@@ -205,7 +202,6 @@ function addToCart(id) {
     qty = Math.max(1, parseInt(document.getElementById(`days-${id}`).value, 10) || 1);
     startDate = document.getElementById(`start-${id}`).value || "";
     endDate = document.getElementById(`end-${id}`).value || "";
-    // Simple discount: R50 off per extra day after the first
     const discountPerExtraDay = 50;
     discount = Math.max(0, qty - 1) * discountPerExtraDay;
   }
@@ -216,7 +212,7 @@ function addToCart(id) {
   const existing = cart.find(i => i.id === id);
   if (existing) {
     existing.qty += qty;
-    existing.price += priceDelta; // accumulate correctly
+    existing.price += priceDelta;
     if (product.isRental) {
       existing.startDate = startDate;
       existing.endDate = endDate;
@@ -239,7 +235,11 @@ function addToCart(id) {
 // ======================
 // Events
 // ======================
-cartBtn.addEventListener("click", () => cartDrawer.classList.add("active"));
+// Toggle cart drawer on click (floating div, not a button)
+cartBtn.addEventListener("click", () => {
+  cartDrawer.classList.toggle("active");
+});
+
 closeCart.addEventListener("click", () => cartDrawer.classList.remove("active"));
 
 clearCartBtn.addEventListener("click", () => {
@@ -261,20 +261,19 @@ checkoutBtn.addEventListener("click", () => {
   window.open(url, "_blank");
 });
 
-// Mobile menu toggle (with CSS max-height animation)
+// Mobile menu toggle
 if (menuToggle && mainNav) {
-  menuToggle.addEventListener("click", () => {
-    mainNav.classList.toggle("show");
-  });
-
-  // Optional: hide menu when a link is clicked (mobile)
+  menuToggle.addEventListener("click", () => mainNav.classList.toggle("show"));
   mainNav.querySelectorAll("a").forEach(a => {
     a.addEventListener("click", () => mainNav.classList.remove("show"));
   });
 }
+
+
 
 // ======================
 // Init
 // ======================
 renderProducts(products);
 renderCart(); // sets badge to R0 on load
+
