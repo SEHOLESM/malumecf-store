@@ -262,12 +262,18 @@ checkoutBtn.addEventListener("click", () => {
 });
 
 // Mobile menu toggle
-if (menuToggle && mainNav) {
-  menuToggle.addEventListener("click", () => mainNav.classList.toggle("show"));
-  mainNav.querySelectorAll("a").forEach(a => {
-    a.addEventListener("click", () => mainNav.classList.remove("show"));
-  });
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menuToggle");
+  const mainNav = document.getElementById("mainNav");
+
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener("click", () => mainNav.classList.toggle("show"));
+
+    mainNav.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => mainNav.classList.remove("show"));
+    });
+  }
+});
 
 
 

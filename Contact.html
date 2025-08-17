@@ -13,9 +13,7 @@
   <div class="container nav-content">
   <a href="home.html"><div class="logo"><strong>Malume cf</strong></div></a>
 
-  <!-- Hamburger Button (moved OUT of nav) -->
-  <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">☰</button>
-
+  
   <nav id="mainNav">
     <a href="home.html">Home</a>
     <a href="home.html">Shop</a>
@@ -39,7 +37,8 @@
 
   <!-- Contact Section -->
   <section class="container" style="padding: 3rem 0;">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+  <div class="contact-grid">
+
       
       <!-- Contact Form -->
       <div>
@@ -65,7 +64,11 @@
 
     </div>
   </section>
-
+  <div id="cartDrawer" class="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="closeCart">Close</button>
+    </div>
   <!-- Footer -->
   <footer class="footer">
     <div class="container">

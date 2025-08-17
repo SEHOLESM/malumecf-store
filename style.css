@@ -265,7 +265,7 @@ img {
     top: 60px; /* below navbar */
   }
   #mainNav.show {
-    max-height: 500px; /* enough to show all links */
+    max-height: 1000px; /* enough to show all links */
     padding: 1rem 0;
   }
   .hero h1 { font-size: 1.8rem; }
