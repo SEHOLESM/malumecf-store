@@ -269,7 +269,7 @@ img {
   .categories { flex-direction: column; align-items: center; }
   #cartBtn {
     position: fixed;
-    top: 70px;   /* below navbar */
+    top: 14px;   /* below navbar */
     right: 15px;
     z-index: 1010; /* same as .cart-float */
     width: auto;
@@ -283,9 +283,7 @@ img {
 }
 
 /* ========================== */
-
-
-
+/* Cart Floating Icon */
 #cartCount {
   display:inline-block ;
   color: #ff0b0b;
