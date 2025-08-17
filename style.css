@@ -269,7 +269,7 @@ img {
   .categories { flex-direction: column; align-items: center; }
   #cartBtn {
     position: fixed;
-    top: 20px;   /* below navbar */
+    top: 18px;   /* below navbar */
     right: 13px;
     z-index: 1010; /* same as .cart-float */
     width: auto;
