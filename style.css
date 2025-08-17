@@ -273,6 +273,7 @@ img {
     right: 13px;
     z-index: 1010; /* same as .cart-float */
     width: auto;
+    gap: 2px;
   }
   .product img { height: 180px; }
 }
