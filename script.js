@@ -272,6 +272,7 @@ if (menuToggle && mainNav) {
 
 
 // ======================
+
 // Init
 // ======================
 renderProducts(products);
