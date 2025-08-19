@@ -143,11 +143,14 @@ function renderProducts(list) {
       div.innerHTML = `
         <img src="${p.image}" alt="${p.name}" />
         <h3>${p.name}</h3>
-        <p>${formatCurrency(p.price)} / per day</p>
+        <p>${formatCurrency(p.price)} / per day </p>
         <label>Days: <input type="number" min="1" value="1" id="days-${p.id}"></label>
         <label>Start Date: <input type="date" id="start-${p.id}"></label>
         <label>EndDate: <input type="date" id="end-${p.id}"></label>
+        <p> "R50 off each added day!"</p>
         <button class="btn-primary" onclick="addToCart(${p.id})">Add to Cart</button>
+          
+        
       `;
     } else {
       div.innerHTML = `
@@ -235,52 +238,88 @@ function addToCart(id) {
 // ======================
 // Events
 // ======================
-// Toggle cart drawer on click (floating div, not a button)
-cartBtn.addEventListener("click", () => {
-  cartDrawer.classList.toggle("active");
-});
-
-closeCart.addEventListener("click", () => cartDrawer.classList.remove("active"));
-
-clearCartBtn.addEventListener("click", () => {
-  cart = [];
-  renderCart();
-});
-
-checkoutBtn.addEventListener("click", () => {
-  if (cart.length === 0) return;
-
-  const total = cart.reduce((sum, i) => sum + i.price, 0);
-  let message = "Hi, I'd like to order:\n";
-  cart.forEach(item => {
-    message += `${item.qty} x ${item.name}${item.isRental ? ` (${item.startDate} to ${item.endDate})` : ""} - ${formatCurrency(item.price)}\n`;
-  });
-  message += `\nTotal: ${formatCurrency(total)}`;
-
-  const url = `https://wa.me/27745243348?text=${encodeURIComponent(message)}`;
-  window.open(url, "_blank");
-});
-
-// Mobile menu toggle
+// Wire up UI after DOM is ready (replaces your Events + Mobile Menu + Init)
+// ======================
 document.addEventListener("DOMContentLoaded", () => {
+  // Re-query elements AFTER DOM is available
   const menuToggle = document.getElementById("menuToggle");
   const mainNav = document.getElementById("mainNav");
 
-  if (menuToggle && mainNav) {
-    menuToggle.addEventListener("click", () => mainNav.classList.toggle("show"));
+  const cartBtn = document.getElementById("cartBtn");
+  const cartDrawer = document.getElementById("cartDrawer");
+  const closeCart = document.getElementById("closeCart");
+  const clearCartBtn = document.getElementById("clearCart");
+  const checkoutBtn = document.getElementById("checkoutBtn");
 
-    mainNav.querySelectorAll("a").forEach(a => {
-      a.addEventListener("click", () => mainNav.classList.remove("show"));
+  // ---- Cart events (guarded) ----
+  if (cartBtn && cartDrawer) {
+    cartBtn.addEventListener("click", () => {
+      cartDrawer.classList.toggle("active");
     });
   }
+
+  if (closeCart && cartDrawer) {
+    closeCart.addEventListener("click", () => cartDrawer.classList.remove("active"));
+  }
+
+  if (clearCartBtn) {
+    clearCartBtn.addEventListener("click", () => {
+      cart = [];
+      renderCart();
+    });
+  }
+
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener("click", () => {
+      if (cart.length === 0) return;
+
+      const total = cart.reduce((sum, i) => sum + i.price, 0);
+      let message = "Hi, I'd like to order:\n";
+      cart.forEach(item => {
+        message += `${item.qty} x ${item.name}${item.isRental ? ` (${item.startDate} to ${item.endDate})` : ""} - ${formatCurrency(item.price)}\n`;
+      });
+      message += `\nTotal: ${formatCurrency(total)}`;
+
+      const url = `https://wa.me/27745243348?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+    });
+  }
+
+  // ---- Mobile Menu Toggle ----
+  if (menuToggle && mainNav) {
+    // Toggle open/close
+    menuToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      mainNav.classList.toggle("show");
+    });
+
+    // Close when clicking a nav link
+    mainNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("show");
+      });
+    });
+
+    // Close when clicking outside
+    document.addEventListener("click", (e) => {
+      if (
+        mainNav.classList.contains("show") &&
+        !mainNav.contains(e.target) &&
+        e.target !== menuToggle
+      ) {
+        mainNav.classList.remove("show");
+      }
+    });
+  }
+
+  // ---- Initial render (now DOM exists) ----
+  renderProducts(products);
+  renderCart(); // sets badge to R0 on load
 });
+// Toggle Phones subcategories
+const phonesBtn = document.querySelector(".dropdown > .category-btn");
+const phoneDropdown = document.querySelector(".dropdown-content");
 
-
-
-// ======================
-
-// Init
-// ======================
-renderProducts(products);
-renderCart(); // sets badge to R0 on load
-
+phonesBtn.addEventListener("click", () => {
+  phoneDropdown.classList.toggle("show");
+});

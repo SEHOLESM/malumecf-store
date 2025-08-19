@@ -22,7 +22,7 @@
   </nav>
 
   <div id="cartBtn" >
-  <img src="images/cart.png" alt="Cart"  style="width:18px; height:18px;" />
+  <img src="images/cart.png" alt="Cart"  style="width:20px; height:20px;" />
   <span id="cartCount">0</span>
 </div>
 </div>
@@ -38,19 +38,28 @@
     </div>
   </section>
 
-  <section id="catalog" class="catalog container">
-    <h2>The Collection</h2>
-    <div class="categories">
-      <button class="category-btn" onclick="filterCategory('All')">All</button>
-      <button class="category-btn" onclick="filterCategory('iPhone')">iPhones</button>
-      <button class="category-btn" onclick="filterCategory('Samsung')">Samsung Phones</button>
-      <button class="category-btn" onclick="filterCategory('MacBook')">MacBooks</button>
-      <button class="category-btn" onclick="filterCategory('Watch')">Watches</button>
-      <button class="category-btn" onclick="filterCategory('Camp Tent Rental')">Camping</button>
-      
+ <section id="catalog" class="catalog container">
+  <h2>The Collection</h2>
+
+  <div class="categories">
+    <button class="category-btn" onclick="filterCategory('All')">All</button>
+
+    <!-- Parent Category: Phones -->
+    <div class="dropdown">
+      <button class="category-btn">Phones ▾</button>
+      <div class="dropdown-content">
+        <button onclick="filterCategory('iPhone')">iPhones</button>
+        <button onclick="filterCategory('Samsung')">Samsung</button>
+      </div>
     </div>
-    <div class="products" id="productList"></div>
-  </section>
+
+    <button class="category-btn" onclick="filterCategory('MacBook')">MacBooks</button>
+    <button class="category-btn" onclick="filterCategory('Watch')">Watches</button>
+    <button class="category-btn" onclick="filterCategory('Camp Tent Rental')">Camping</button>
+  </div>
+
+  <div class="products" id="productList"></div>
+</section>
   
   <footer id="contact" class="footer">
     <div class="container">
