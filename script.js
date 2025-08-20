@@ -270,19 +270,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (checkoutBtn) {
-    checkoutBtn.addEventListener("click", () => {
-      if (cart.length === 0) return;
+          checkoutBtn.addEventListener("click", () => {
+        if (cart.length === 0) return;
 
-      const total = cart.reduce((sum, i) => sum + i.price, 0);
-      let message = "Hi, I'd like to order:\n";
-      cart.forEach(item => {
-        message += `${item.qty} x ${item.name}${item.isRental ? ` (${item.startDate} to ${item.endDate})` : ""} - ${formatCurrency(item.price)}\n`;
+        const total = cart.reduce((sum, i) => sum + i.price, 0);
+
+        let message = "Hi, I'd like to order:\n\n";
+        
+        cart.forEach(item => {
+          message += `${item.qty} x ${item.name}${
+            item.isRental ? ` (${item.startDate} to ${item.endDate})` : ""
+          } - ${formatCurrency(item.price)}\n`;
+        });
+
+        message += `\nTotal: ${formatCurrency(total)}\n\n`;
+        message += "Could you please confirm which colours are available?";
+
+        const url = `https://wa.me/27745243348?text=${encodeURIComponent(message)}`;
+        window.open(url, "_blank");
       });
-      message += `\nTotal: ${formatCurrency(total)}`;
-
-      const url = `https://wa.me/27745243348?text=${encodeURIComponent(message)}`;
-      window.open(url, "_blank");
-    });
   }
 
   // ---- Mobile Menu Toggle ----

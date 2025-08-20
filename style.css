@@ -102,6 +102,28 @@ body {
   transition: all 0.3s ease;
   font-size: 1rem;
 }
+
+.btn-clear {
+  background-color: #c5c5c5;
+  color: #000;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+.btn-clear:hover {
+  background-color: #a9a9a9;
+  color: #fff;
+  cursor: pointer;
+  transform: scale(1.05); /* slight zoom effect */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  
+
+}
+
+
 .btn-primary {
   background: #0056b3;
   color: #fff;
@@ -112,10 +134,16 @@ body {
 .btn-outline { 
   border: none;
   color: white; 
-  background: #0e6f63;
+  background: black;
+  text-decoration: none; /* no underline by default */
 } 
 .btn-outline:hover {
-  background:#128c7e;
+  color: #fff;
+  text-decoration: none !important; /* no underline on hover */
+  transform: scale(1.05); /* slight zoom effect */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  
 }
 
 /* ========================== */
@@ -214,7 +242,7 @@ img {
   bottom: 0;
   right: 0;
   background-color: #fff;
-  border-left: 3px solid #1abc9c;
+  border-left: 3px solid #007bff;
   box-shadow: -4px 0 20px rgba(0,0,0,0.3);
   padding: 20px;
   overflow-y: auto;
@@ -371,3 +399,98 @@ img {
  
   
 }
+/* =======about page=================== */
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}     
+/* Hero section adjustments */
+.hero { 
+  padding: 4rem 1rem; /* more padding for larger screens */
+  background: linear-gradient(135deg, #111111, #333333);
+  color: #fff;
+  text-align: center;
+  margin-top: 50px; /* push hero below fixed navbar */
+} 
+.hero h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+} 
+.hero p {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  color: #cccccc;
+}
+/* Footer adjustments */
+.footer {
+  padding: 2rem 0;
+  background: #1a1a1a;
+  text-align: center;
+  margin-top: 2rem;
+  color: #ddd;
+}
+.footer p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+} 
+/* Footer links */
+.footer a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s;
+}       
+.footer a:hover {
+  color: #1abc9c;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}       
+/* Footer social icons */
+.footer .social-icons {     
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 1rem;
+} 
+.footer .social-icons a {
+  color: #ffffff;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+} 
+.footer .social-icons a:hover {
+  color: #1abc9c;
+} 
+.about-cta {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.about-cta .btn {
+  background: #222;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.about-cta .btn:hover {
+  background: #555;
+}
+
+
+
+/* ========================== */
+/* Responsive adjustments */    
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 1rem; }
+  .footer p { font-size: 0.8rem; }
+  .footer .social-icons a { font-size: 1.2rem; }
+} 
+/* ========================== */
+/* End of style.css */
+
+  
