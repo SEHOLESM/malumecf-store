@@ -224,7 +224,7 @@ img {
 }
 
 #cartBtn:hover  {
-  transform: translateY(-5px);
+  transform: scale(1.05); /* slight zoom effect */
   box-shadow: 0 10px 20px rgba(0,0,0,0.15);
   transition: transform 0.3s, box-shadow 0.3s;
   border-radius: 20%; /* circular button */
