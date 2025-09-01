@@ -3,6 +3,8 @@
 /* ========================== */
 /* General Styles */
 /* ========================== */
+/* Delivery banner styles */
+    
 body {
   background: #fff;
   color: #222;
@@ -492,5 +494,19 @@ img {
 } 
 /* ========================== */
 /* End of style.css */
+/* =========delivery policy ================= */
 
-  
+.delivery {
+  background-color: #f0f8ff; /* light blue background */
+  border: 1px solid #007bff; /* blue border */
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 50%;
+  text-align: center;
+}
+  @media (max-width: 768px) {
+  .delivery {
+    font-size: 0.9rem; /* slightly smaller text on mobile */
+    padding: 8px;
+  } 
+  }

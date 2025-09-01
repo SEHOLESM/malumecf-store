@@ -329,3 +329,8 @@ const phoneDropdown = document.querySelector(".dropdown-content");
 phonesBtn.addEventListener("click", () => {
   phoneDropdown.classList.toggle("show");
 });
+// Save cart to localStorage
+
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
