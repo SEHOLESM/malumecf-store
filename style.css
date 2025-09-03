@@ -318,11 +318,20 @@ img {
     .logo {
     width: 100px;   /* slightly smaller logo on small screens */
     position: static; /* no absolute/fixed */
-    margin: 0 auto;  /* center it if you want */
+    margin: center;  /* center in navbar */
+    left: 50%;      /* center horizontally */
+    transform: translateX(-10%); /* center precisely */
   }
    .logo img {
-    height: auto;                /* reasonable size */
+    height:50%;                /* reasonable size */
     width: auto;
+    max-width: 100px;            /* cap max width */
+    display: block;              /* remove inline spacing */
+    margin: 0 auto;              /* center image */
+    object-fit: contain;         /* maintain aspect ratio */
+               /* no extra padding */
+
+
   }
 
 }
