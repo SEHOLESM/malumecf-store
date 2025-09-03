@@ -391,7 +391,13 @@ img {
     font-size: 0.9rem;
     padding: 8px;
   }
+  .container {
+  width: 90%;
+  margin: 0 auto; /* center it */
 }
+}
+
+
 
 /* ========================== */
 /* Mobile / Responsive Adjustments */
@@ -431,7 +437,7 @@ img {
     width: 100px;
     margin: 0 auto;
     right: 15px;
-    transform: translateX(-17%);     
+    transform: translateX(-1%);     
   }
   .logo img { max-width: 10opx; height: 50%; margin: 0 auto; object-fit: contain; }
 }
