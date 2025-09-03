@@ -7,22 +7,46 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- Navbar -->
+  <!-- Navbar -->
   <header class="navbar">
-  <div class="container nav-content">
-  <a href="home.html"><div class="logo"><img src="images/MALUMECF LOGO.png" alt=""></div></a>
+    <div class="container nav-content">
+      <a href="home.html">
+        <div class="logo"><img src="images/MALUMECF LOGO.png" alt="Logo"></div>
+      </a>
 
-  <!-- Hamburger Button (moved OUT of nav) -->
-  <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">☰</button>
+      <!-- Hamburger Button -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">☰</button>
 
-  <nav id="mainNav">
-    <a href="home.html">Home</a>
-    <a href="home.html">Shop</a>
-    <a href="Contact.html">Contact</a>
-  
-  </nav>
-   </div>
+      <nav id="mainNav">
+        <a href="home.html">Home</a>
+        <a href="home.html#catalog">Shop</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <!-- Cart Icon + Badge -->
+      <div id="cartBtn">
+        <img src="images/cart.png" alt="Cart" style="width:25px; height:25px;" />
+        <span id="cartCount">0</span>
+      </div>
+    </div>
   </header>
+
+  <!-- Cart Drawer -->
+  <div id="cartDrawer" class="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="closeCart">Close</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="subtotal">Subtotal: <span id="cartTotal">R0</span></div>
+      <button id="clearCart" class="btn-clear">Clear</button>
+      <button id="checkoutBtn" class="btn-outline">Checkout via WhatsApp</button>
+      <div class="delivery">
+        <h6>🚚 Free deliveries on all our Smart Devices</h6>
+      </div>
+    </div>
+  </div>
 
   <!-- About Us Section -->
   <section class="hero">
@@ -74,10 +98,11 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2025 MalumeCF. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> MalumeCF. All rights reserved.</p>
     </div>
   </footer>
-    <!-- Add your JS here -->
+
+  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 </html>

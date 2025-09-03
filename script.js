@@ -123,7 +123,7 @@ if (year) year.textContent = new Date().getFullYear();
 // ======================
 // State
 // ======================
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // ======================
 // Rendering
@@ -166,28 +166,37 @@ function renderProducts(list) {
 }
 
 function renderCart() {
-  cartItems.innerHTML = "";
+  if (!cartCountEl) return; // Only need the badge
+
+  // Optional: only update cart drawer if it exists
+  if (cartItems) cartItems.innerHTML = "";
   let total = 0;
 
   cart.forEach(item => {
     total += item.price;
-    const div = document.createElement("div");
-    div.className = "cart-item";
-    div.innerHTML = `
-      <span>${item.qty}x ${item.name}${item.isRental ? ` (${item.startDate || ""} to ${item.endDate || ""})` : ""}</span>
-      <span>${formatCurrency(item.price)}</span>
-    `;
-    cartItems.appendChild(div);
+
+    if (cartItems) {
+      const div = document.createElement("div");
+      div.className = "cart-item";
+      div.innerHTML = `
+        <span>${item.qty}x ${item.name}${item.isRental ? ` (${item.startDate || ""} to ${item.endDate || ""})` : ""}</span>
+        <span>${formatCurrency(item.price)}</span>
+      `;
+      cartItems.appendChild(div);
+    }
   });
 
-  cartTotal.textContent = formatCurrency(total);
-  cartCountEl.textContent = formatCurrency(total);
+  if (cartTotal) cartTotal.textContent = formatCurrency(total);
+
+  const itemCount = cart.reduce((sum, item) => sum + item.qty, 0);
+  cartCountEl.textContent = itemCount;
 
   // Trigger pulse + bounce animation
-  cartCountEl.classList.remove("pulse", "bounce"); // reset animations
-  void cartCountEl.offsetWidth; // force reflow
+  cartCountEl.classList.remove("pulse", "bounce");
+  void cartCountEl.offsetWidth;
   cartCountEl.classList.add("pulse", "bounce");
 }
+
 
 // ======================
 // Cart Operations
@@ -233,6 +242,7 @@ function addToCart(id) {
   }
 
   renderCart();
+  saveCart();   // <--- add this
 }
 
 // ======================
@@ -266,6 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
     clearCartBtn.addEventListener("click", () => {
       cart = [];
       renderCart();
+      saveCart();   // <--- add this
     });
   }
 
@@ -288,6 +299,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const url = `https://wa.me/27745243348?text=${encodeURIComponent(message)}`;
         window.open(url, "_blank");
+         cart = [];                  // clear after checkout
+          saveCart();                 // <--- add this
+          renderCart();               // update UI
       });
   }
 
@@ -319,7 +333,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ---- Initial render (now DOM exists) ----
-  renderProducts(products);
+  if (productList) renderProducts(products);
   renderCart(); // sets badge to R0 on load
 });
 // Toggle Phones subcategories

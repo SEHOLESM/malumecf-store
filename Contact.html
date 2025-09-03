@@ -19,12 +19,11 @@
   <nav id="mainNav">
     <a href="home.html">Home</a>
     <a href="home.html">Shop</a>
-    <a href="Contact.html">Contact</a>
     <a href="about.html">About</a>
   </nav>
 
-  <div id="cartBtn" >
-  <img src="images/cart.png" alt="Cart"  style="width:20px; height:20px;" />
+   <div id="cartBtn">
+  <img src="images/cart.png" alt="Cart"  style="width:25px; height:25px;" />
   <span id="cartCount">0</span>
 </div>
 </div>
@@ -64,6 +63,25 @@
       <p class="copyright">© <span id="year"></span> Malumecf. All rights reserved.</p>
     </div>
   </footer>
+  <div id="cartDrawer" class="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="closeCart">Close</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="subtotal">Subtotal: <span id="cartTotal">R0</span></div>
+      <button id="clearCart" class="btn-clear">Clear</button>
+      <button id="checkoutBtn" class="btn-outline">Checkout via WhatsApp</button>
+     
+      <!-- 🚚 Delivery policy-->
+          <div class="delivery">
+              <h6>🚚 Free deliveries on all our Smart Devices</h6>
+          </div>
+          
+        
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
