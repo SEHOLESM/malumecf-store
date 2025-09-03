@@ -27,6 +27,7 @@ body {
   background: #fff;
   border-bottom: 1px solid #eee;
   position: fixed;
+  height: 80px;
   top: 0;
   left: 0;
   width: 100%;
@@ -40,20 +41,23 @@ body {
 }
 .nav-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* keeps logo left, cart/menu right */
   align-items: center;
   padding: 1rem 0;
   width: 90%;
   max-width: 1200px;
 }
 .logo {
-  font-weight: 700;
-  font-size: 18px;
-  color: black;
-  text-decoration: none;
-   margin-left: auto;   /* push logo to the right */
-  text-align: right;   /* align text */
- 
+  width: 120px;      /* adjust size */
+  height: auto;
+  flex-shrink: 0;    /* prevent shrinking */
+  position: static;  /* reset positioning */
+  margin: 0;
+}
+.logo img {
+  height: 100px;      /* keep navbar height consistent */
+  width: auto;       /* preserve aspect ratio */
+  display: block;    /* remove extra inline spacing */
 }
 .navbar nav {
   display: flex;
@@ -79,7 +83,7 @@ body {
   background: linear-gradient(135deg, #111111, #333333);
   color: #fff;
   text-align: center;
-  margin-top:  50px;   /* push hero below fixed navbar */
+  margin-top:  80px;   /* push hero below fixed navbar */
 }
 .hero h1 {
   font-size: 2.5rem;
@@ -285,14 +289,16 @@ img {
     flex-direction: column;
     gap: 10px;
     background: #fff;
-    position: static; /* fix above content */
+    position: absolute;   /* absolute under navbar */
+    top: 100%;            /* directly below navbar */
+    right: 10px;          /* align left with logo */
+    width: 100%;
     padding: 0;
-    border-top: 0px solid #eee;
+    border-top: 1px solid #eee;
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.3s ease;
-    z-index: 1050; /* above cart */
-    top: 60px; /* below navbar */
+    z-index: 1050;
   }
   #mainNav.show {
     max-height: 1000px; /* enough to show all links */
@@ -310,9 +316,13 @@ img {
   }
   .product img { height: 180px; }
     .logo {
-    position: absolute;
-    left:1rem; /* align logo to the right */
-    top: 15px; /* align logo to the top */
+    width: 100px;   /* slightly smaller logo on small screens */
+    position: static; /* no absolute/fixed */
+    margin: 0 auto;  /* center it if you want */
+  }
+   .logo img {
+    height: auto;                /* reasonable size */
+    width: auto;
   }
 
 }
@@ -352,8 +362,8 @@ img {
   .menu-toggle {
     display: block;
     position: absolute;
-    top: 10px;
-    left: center;
+    top: 15px;
+    left: 15px;
     z-index: 1100;
   }
 }
@@ -402,28 +412,8 @@ img {
   
 }
 /* =======about page=================== */
-.hero-content {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}     
-/* Hero section adjustments */
-.hero { 
-  padding: 4rem 1rem; /* more padding for larger screens */
-  background: linear-gradient(135deg, #111111, #333333);
-  color: #fff;
-  text-align: center;
-  margin-top: 50px; /* push hero below fixed navbar */
-} 
-.hero h1 {
-  font-size: 2.5rem;
-  color: #ffffff;
-} 
-.hero p {
-  font-size: 1.1rem;
-  margin-top: 0.5rem;
-  color: #cccccc;
-}
+  
+
 /* Footer adjustments */
 .footer {
   padding: 2rem 0;
