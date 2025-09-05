@@ -61,15 +61,15 @@ const products = [
   { id: 52, name: "iPhone 16 Pro Max 512GB", price: 26000, image: "images/iPhone 16 Pro Max 256GB.jpeg", category: "iPhone" },
 
   // Apple Watches
-  { id: 53, name: "Apple Watch SE 2", price: 6000, image: "images/Apple Watch SE 2.jpeg", category: "Watch" },
-  { id: 54, name: "Apple Watch Series 5", price: 5500, image: "images/Apple Watch Series 5.jpeg", category: "Watch" },
-  { id: 55, name: "Apple Watch Series 6", price: 5800, image: "images/Apple Watch Series 6.jpeg", category: "Watch" },
-  { id: 56, name: "Apple Watch Series 7", price: 6500, image: "images/Apple Watch Series 7.jpeg", category: "Watch" },
-  { id: 57, name: "Apple Watch Series 8", price: 7000, image: "images/Apple Watch Series 8.jpeg", category: "Watch" },
-  { id: 58, name: "Apple Watch Series 9", price: 8000, image: "images/Apple Watch Series 9.jpeg", category: "Watch" },
+  { id: 53, name: "Apple Watch SE 2" , price: 6000, image: "images/Apple Watch SE 2.jpeg", category: "Watch" , description: "GPS + Cellular"},
+  { id: 54, name: "Apple Watch Series 5", price: 5500, image: "images/Apple Watch Series 5.jpeg", category: "Watch", description: "GPS + Cellular"  },
+  { id: 55, name: "Apple Watch Series 6", price: 5800, image: "images/Apple Watch Series 6.jpeg", category: "Watch", description: "GPS + Cellular"  },
+  { id: 56, name: "Apple Watch Series 7", price: 6500, image: "images/Apple Watch Series 7.jpeg", category: "Watch" , description: "GPS + Cellular" },
+  { id: 57, name: "Apple Watch Series 8", price: 7000, image: "images/Apple Watch Series 8.jpeg", category: "Watch" , description: "GPS + Cellular" },
+  { id: 58, name: "Apple Watch Series 9", price: 8000, image: "images/Apple Watch Series 9.jpeg", category: "Watch" , description: "GPS + Cellular" },
 
   // MacBook
-  { id: 59, name: "MacBook Air 2017 (8GB RAM / 256GB SSD, i5)", price: 6500, image: "images/MacBook Air 2017.jpeg", category: "MacBook" },
+  { id: 59, name: "MacBook Air 2017 (8GB RAM / 256GB SSD, i5)", price: 7000, image: "images/MacBook Air 2017.jpeg", category: "MacBook" },
 
   // Samsung Phones
   { id: 60, name: "Samsung A05 64GB", price: 2550, image: "images/Samsung A05 64GB.jpeg", category: "Samsung" },
@@ -146,16 +146,15 @@ function renderProducts(list) {
         <p>${formatCurrency(p.price)} / per day </p>
         <label>Days: <input type="number" min="1" value="1" id="days-${p.id}"></label>
         <label>Start Date: <input type="date" id="start-${p.id}"></label>
-        <label>EndDate: <input type="date" id="end-${p.id}"></label>
-        <p> "R50 off each added day!"</p>
+        <label>End Date: <input type="date" id="end-${p.id}"></label>
+        <p>R50 off each added day!</p>
         <button class="btn-primary" onclick="addToCart(${p.id})">Add to Cart</button>
-          
-        
       `;
     } else {
       div.innerHTML = `
         <img src="${p.image}" alt="${p.name}" />
         <h3>${p.name}</h3>
+        ${p.description ? `<p class="desc">${p.description}</p>` : ""} 
         <p>${formatCurrency(p.price)}</p>
         <button class="btn-primary" onclick="addToCart(${p.id})">Add to Cart</button>
       `;
