@@ -110,6 +110,7 @@ img {
   margin-top: 1rem;
   transition: all 0.3s ease;
   font-size: 1rem;
+  text-decoration: none;
 }
 
 .btn-primary {
@@ -130,6 +131,8 @@ img {
 .btn-outline:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-decoration: none;
+
 }
 
 .btn-clear {
